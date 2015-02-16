@@ -5,19 +5,15 @@ class Encryptor
     Hash[characters.zip(rotated_characters)]
   end
 
-  def encrypt_letter(letter)
-    rotation = 8
+  def encrypt_letter(letter,rotation)
     cipher_for_rotation = cipher(rotation)
     cipher_for_rotation[letter]
   end
 
-  def encrypt(string)
+  def encrypt(string,rotation)
     letters = string.split("")
-
-    results = letters.collect { |letter| encrypt_letter(letter) }
-
+    results = letters.collect { |letter| encrypt_letter(letter,rotation) }
     results.join
-
   end
 end
 
@@ -29,18 +25,14 @@ class Decryptor
     Hash[characters.zip(rotated_characters)]
   end
 
-  def decrypt_letter(letter)
-    rotation = 8
+  def decrypt_letter(letter,rotation)
     cipher_for_rotation = cipher(rotation)
     cipher_for_rotation[letter]
   end
 
-  def decrypt(string)
+  def decrypt(string,rotation)
     letters = string.split("")
-
-    results = letters.collect { |letter| decrypt_letter(letter) }
-
+    results = letters.collect { |letter| decrypt_letter(letter,rotation) }
     results.join
-
   end
 end
