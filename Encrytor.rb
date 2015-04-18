@@ -15,6 +15,16 @@ class Encryptor
     results = letters.collect { |letter| encrypt_letter(letter,rotation) }
     results.join
   end
+
+
+
+  def encrypt_file(secrets,rotation)
+    input = File.open("secrets.txt", "r")
+    puts input.read.encrypt
+    out = File.open("secrets.txt.encrypted", "w")
+    puts input.write
+    out.close
+  end
 end
 
 class Decryptor
